@@ -95,11 +95,6 @@ public class Responder
                 {
                     responseMap.put(keyword.trim(), response);
                 }
-
-                while (responseLine != null && responseLine.trim().isEmpty()) 
-                {
-                    responseLine = reader.readLine();
-                }
                 
                 keysLine = reader.readLine();
            }
@@ -123,22 +118,27 @@ public class Responder
     {
         Charset charset = Charset.forName("US-ASCII");
         Path path = Paths.get(FILE_OF_DEFAULT_RESPONSES);
-        try (BufferedReader reader = Files.newBufferedReader(path, charset)) {
+        try (BufferedReader reader = Files.newBufferedReader(path, charset)) 
+        {
             String response = reader.readLine();
-            while(response != null) {
+            while(response != null) 
+            {
                 defaultResponses.add(response);
                 response = reader.readLine();
             }
         }
-        catch(FileNotFoundException e) {
+        catch(FileNotFoundException e) 
+        {
             System.err.println("Unable to open " + FILE_OF_DEFAULT_RESPONSES);
         }
-        catch(IOException e) {
+        catch(IOException e) 
+        {
             System.err.println("A problem was encountered reading " +
                                FILE_OF_DEFAULT_RESPONSES);
         }
         // Make sure we have at least one response.
-        if(defaultResponses.size() == 0) {
+        if(defaultResponses.size() == 0) 
+        {
             defaultResponses.add("Could you elaborate on that?");
         }
     }
