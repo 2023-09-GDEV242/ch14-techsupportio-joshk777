@@ -37,7 +37,8 @@ public class InputReader
 
         // add words from array into hashset 
         HashSet<String> words = new HashSet<>();
-        for(String word : wordArray) {
+        for(String word : wordArray) 
+        {
             words.add(word);
         }
         return words;
